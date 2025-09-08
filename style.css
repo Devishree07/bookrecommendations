@@ -172,3 +172,15 @@ footer p {
         width: 100%;
     }
 }
+/* For screens 768px wide or smaller */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack items vertically */
+    width: 95%;             /* Smaller width for mobile */
+  }
+
+  .navbar {
+    font-size: 1rem;        /* Smaller text on mobile */
+  }
+}
+
