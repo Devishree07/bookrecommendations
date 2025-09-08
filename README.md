@@ -1,32 +1,34 @@
-Overview :
+Book Review App
 
-This is a simple Book Review Web Application that allows users to add books with details such as title, author, description, and an optional image. Users can see all added books and can delete the books they added. The application is built using HTML, CSS, and JavaScript.
+A simple and interactive Book Review Web Application that allows users to add books with details like title, author, description, and an optional image. Users can view all added books and delete only the books they added.
 
-Features :
+Built using HTML, CSS, and Vanilla JavaScript.
 
-Add a Book : Users can submit a book with title, author, description, and optionally an image.
+🔹 Features
 
-Conditional Image Display : If an image is not uploaded, the book displays only text, without leaving empty spaces.
+Add a Book: Submit books with title, author, description, and optional image.
 
-Delete Own Books : Users can delete only the books they added.
+Conditional Image Display: If no image is uploaded, the layout shows only text — no blank spaces.
 
-Responsive Layout : Works on desktops and mobile devices.
+Delete Own Books: Only the user who added a book can delete it.
 
-Technologies Used :
+Responsive Layout: Works seamlessly on desktops and mobile devices.
 
-HTML5
+Technologies Used
 
-CSS3
+HTML5 – structure of the application
 
-JavaScript (Vanilla JS)
+CSS3 – styling and layout
 
-Usage :
+JavaScript (Vanilla JS) – interactivity and DOM manipulation
+
+Usage
 
 Clone or download the repository.
 
 Open index.html in your browser.
 
-Enter the book details:
+Fill in the book details:
 
 Title (required)
 
@@ -38,30 +40,30 @@ Image (optional)
 
 Click Submit.
 
-Only the user who added a book can see and use the Delete button.
+Only the user who added a book will see the Delete button.
 
 How It Works
 
-The JavaScript script listens for the Submit button click event.
+The script listens for the Submit button click event.
 
-When a user submits a book:
+When a book is submitted:
 
-It checks that all required fields are filled.
+Required fields are validated.
 
-If an image is provided, it’s displayed using a FileReader.
+If an image is uploaded, it is displayed using a FileReader.
 
-The book information is displayed in a card layout.
+Book details are shown in a card layout.
 
-The delete button is added only for the user who added the book.
+Delete button is displayed only for the user who added the book.
 
 Users can delete their own books with confirmation.
 
-Future Improvements:
+Future Improvements
 
 Add user authentication for multiple users.
 
 Store book data in local storage or a database for persistence.
 
-Enhance UI with animations and improved mobile responsiveness.
+Enhance the UI with animations and improved mobile responsiveness.
 
-
+Add search and filter functionality for books.
