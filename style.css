@@ -1,14 +1,14 @@
+/* General Styling */
 body {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
     color: #333;
-    
 }
 
-header .head 
-{
+/* Header */
+header .head {
     background-image: url('285ea2b48cee0319942a98369c8a67b4.jpg');
     background-size: cover;
     background-position: center;
@@ -19,114 +19,150 @@ header .head
     flex-direction: column;
     justify-content: center;
 }
-header .head h1
-{
+header .head h1 {
     font-size: 45px;
     margin: 0;
-    font-weight: 300px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
-header .head h3{
-    font-size: 30px;
-    margin: 0;
-}
-.book1 img
-{
-    width: 150px;
-    height: 200px;
-    border-radius: 5px;
-    margin-right: 20px;
-}
-.book1
-{
-  display: flex;
-    background: white;
-    margin-bottom: 20px;
-    padding: 40px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 70%;
-   margin-left:15%;
-   font-variant: small-caps;
-   transition: transform 0.2s ease;
-
-
-
-   border-style: 10px double;
-}
-.book1:hover {
-    transform: scale(1.1);
-}
-.info h4{
-    margin: 0;
-    font-size: 1.5em;
-}
-.info p{
-    margin: 10px 0;
-}
-footer
-{
-    margin: 0;
-    background-color: rgb(77, 34, 34);
-    height: 200px;
+header .head marquee {
     font-size: 20px;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    
+    font-weight: bold;
+    color: #fff;
 }
-.fa {
-   
-    text-decoration: none;
-    color: white;
-}
+
+/* Section Title */
 .bbb {
     margin: 30px;
+    font-size: 28px;
+    color: rgb(77, 34, 34);
+    border-left: 5px solid rgb(77, 34, 34);
+    padding-left: 10px;
 }
-.bbb:hover
-{
+
+/* Book Container */
+.book1 {
+    display: flex;
+    align-items: center;
+    background: white;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    font-variant: small-caps;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #eee;
+}
+.book1 img {
+    width: 150px;
+    height: 200px;
+    border-radius: 8px;
+    margin-right: 20px;
+    object-fit: cover;
+}
+.book1:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Book Info */
+.info h4 {
+    margin: 0;
+    font-size: 1.3em;
+    color: rgb(77, 34, 34);
+}
+.info p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+.info a {
     display: inline-block;
-    color:#338;
+    margin-top: 5px;
+    color: rgb(77, 34, 34);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.info a:hover {
+    color: black;
     text-decoration: underline;
 }
-marquee
-{
-    font-size: 20px;
-}
+
+/* Floating Home Button */
 .home-button {
     position: fixed;
-    bottom: 50px;
+    bottom: 40px;
     right: 20px;
-    padding: 10px 15px;
+    padding: 12px 18px;
     background-color: rgb(77, 34, 34);
     color: white;
     text-decoration: none;
     font-size: 18px;
-    border-radius: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.home-button:hover {
+    background-color: black;
+    transform: scale(1.1);
 }
 
-.home-button:hover {
-    background-color:black;
+/* Reviews Section */
+.reviews {
+    margin: 40px auto;
+    width: 70%;
+    text-align: left;
 }
-.reviews
-{
-    margin: 20px;
+.reviews h3 {
+    color: rgb(77, 34, 34);
+    margin-bottom: 10px;
+}
+#ree {
+    padding: 10px;
+    width: 60%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+#ree:focus {
+    border-color: rgb(77, 34, 34);
+    box-shadow: 0 0 8px rgba(77, 34, 34, 0.6);
     outline: none;
 }
-.reviews:hover
-{
-    color: brown;
-}
-#ree:hover
-{
-    box-shadow:rgb(77, 34, 34);
-    border-color: rgb(77, 34, 34); 
-    box-shadow: 0 0 5px rgb(77, 34, 34); 
-    outline: none; 
-    
-}
-button
-{
+button {
     border-radius: 5px;
-    background-color:  rgb(77, 34, 34);
+    background-color: rgb(77, 34, 34);
     color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: black;
+}
+
+/* Footer */
+footer {
+    background-color: rgb(77, 34, 34);
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+}
+footer p {
+    margin: 8px 0;
+}
+.fa {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    font-size: 22px;
+    transition: color 0.3s ease;
+}
+.fa:hover {
+    color: #ccc;
 }
