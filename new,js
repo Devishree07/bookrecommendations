@@ -1,0 +1,13 @@
+document.querySelector('.reviews button').addEventListener('click', () => {
+    let suggestion = document.getElementById('ree').value.trim();
+    if(suggestion) {
+        let suggestions = JSON.parse(localStorage.getItem("suggestions")) || [];
+        suggestions.push(suggestion);
+        localStorage.setItem("suggestions", JSON.stringify(suggestions));
+
+        alert("✅ Thanks for your suggestion: " + suggestion);
+        document.getElementById('ree').value = "";
+    } else {
+        alert("⚠️ Please enter a suggestion!");
+    }
+});
