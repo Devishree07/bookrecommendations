@@ -32,7 +32,7 @@ document.getElementById('submitBook').addEventListener('click', () => {
     const bookContainer = document.createElement('div');
     bookContainer.className = 'book1';
 
-    // Only add image if user uploaded one
+    // Only create <img> if a file was uploaded
     if(imageInput.files && imageInput.files[0]) {
         const img = document.createElement('img');
         const reader = new FileReader();
