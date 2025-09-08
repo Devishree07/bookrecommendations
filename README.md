@@ -1,17 +1,18 @@
 Overview :
-This is a simple Book Review Web Application that allows users to add books with details such as title, author, description, and an optional image. Users can see all added books and can delete only the books they added. The application is built using HTML, CSS, and JavaScript.
 
-Features
+This is a simple Book Review Web Application that allows users to add books with details such as title, author, description, and an optional image. Users can see all added books and can delete the books they added. The application is built using HTML, CSS, and JavaScript.
 
-Add a Book: Users can submit a book with title, author, description, and optionally an image.
+Features :
 
-Conditional Image Display: If an image is not uploaded, the book displays only text, without leaving empty spaces.
+Add a Book : Users can submit a book with title, author, description, and optionally an image.
 
-Delete Own Books: Users can delete only the books they added.
+Conditional Image Display : If an image is not uploaded, the book displays only text, without leaving empty spaces.
 
-Responsive Layout: Works on desktops and mobile devices.
+Delete Own Books : Users can delete only the books they added.
 
-Technologies Used
+Responsive Layout : Works on desktops and mobile devices.
+
+Technologies Used :
 
 HTML5
 
@@ -19,7 +20,7 @@ CSS3
 
 JavaScript (Vanilla JS)
 
-Usage
+Usage :
 
 Clone or download the repository.
 
@@ -62,4 +63,5 @@ Add user authentication for multiple users.
 Store book data in local storage or a database for persistence.
 
 Enhance UI with animations and improved mobile responsiveness.
+
 
