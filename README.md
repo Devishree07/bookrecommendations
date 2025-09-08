@@ -1,4 +1,4 @@
-Book Review App
+📚 Book Review App
 
 A simple and interactive Book Review Web Application that allows users to add books with details like title, author, description, and an optional image. Users can view all added books and delete only the books they added.
 
@@ -14,7 +14,7 @@ Delete Own Books: Only the user who added a book can delete it.
 
 Responsive Layout: Works seamlessly on desktops and mobile devices.
 
-Technologies Used
+🛠️ Technologies Used
 
 HTML5 – structure of the application
 
@@ -22,7 +22,7 @@ CSS3 – styling and layout
 
 JavaScript (Vanilla JS) – interactivity and DOM manipulation
 
-Usage
+🚀 Usage
 
 Clone or download the repository.
 
@@ -42,7 +42,7 @@ Click Submit.
 
 Only the user who added a book will see the Delete button.
 
-How It Works
+⚙️ How It Works
 
 The script listens for the Submit button click event.
 
@@ -58,7 +58,7 @@ Delete button is displayed only for the user who added the book.
 
 Users can delete their own books with confirmation.
 
-Future Improvements
+🔮 Future Improvements
 
 Add user authentication for multiple users.
 
