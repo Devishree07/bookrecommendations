@@ -1,5 +1,4 @@
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/062d80d9-2f9c-426c-bac2-c529ae90b4e4" />Overview
-
+Overview :
 This is a simple Book Review Web Application that allows users to add books with details such as title, author, description, and an optional image. Users can see all added books and can delete only the books they added. The application is built using HTML, CSS, and JavaScript.
 
 Features
@@ -63,3 +62,4 @@ Add user authentication for multiple users.
 Store book data in local storage or a database for persistence.
 
 Enhance UI with animations and improved mobile responsiveness.
+
