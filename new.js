@@ -15,14 +15,13 @@ document.getElementById('submitSuggestion').addEventListener('click', () => {
         alert("Thanks for your suggestion: " + suggestion);
         suggestionInput.value = "";
     } else {
-        alert("⚠️ Please enter a suggestion!");
+        alert(" Please enter a suggestion");
     }
 });
 
 document.getElementById('submitBook').addEventListener('click', () => {
     const title = document.getElementById('bookTitle').value.trim();
     const author = document.getElementById('bookAuthor').value.trim();
-    const description = document.getElementById('description').value.trim();
     const imageInput = document.getElementById('bookImage');
     
     if(!title || !author) {
@@ -30,6 +29,7 @@ document.getElementById('submitBook').addEventListener('click', () => {
         return;
     }
 
+    // Create a new book card
     const bookContainer = document.createElement('div');
     bookContainer.className = 'book1';
 
@@ -41,8 +41,8 @@ document.getElementById('submitBook').addEventListener('click', () => {
         }
         reader.readAsDataURL(imageInput.files[0]);
     } else {
-        img.src = 'images/default-book.png'; 
-
+        img.src = 'images/default-book.png'; // fallback image
+    }
 
     const infoDiv = document.createElement('div');
     infoDiv.className = 'info';
@@ -52,11 +52,30 @@ document.getElementById('submitBook').addEventListener('click', () => {
         <p>User submitted book.</p>
     `;
 
+    // Create delete button
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.style.backgroundColor = 'red';
+    deleteBtn.style.marginTop = '10px';
+    deleteBtn.style.padding = '5px 10px';
+    deleteBtn.style.cursor = 'pointer';
+    deleteBtn.style.color = 'white';
+    deleteBtn.style.border = 'none';
+    deleteBtn.style.borderRadius = '5px';
+
+    // Delete functionality
+    deleteBtn.addEventListener('click', () => {
+        bookContainer.remove(); // removes the entire book card
+    });
+
+    infoDiv.appendChild(deleteBtn); // add delete button inside info
     bookContainer.appendChild(img);
     bookContainer.appendChild(infoDiv);
 
+    // Add the new book to the page (above the reviews section)
     document.querySelector('.reviews').before(bookContainer);
 
+    // Clear inputs
     document.getElementById('bookTitle').value = '';
     document.getElementById('bookAuthor').value = '';
     imageInput.value = '';
