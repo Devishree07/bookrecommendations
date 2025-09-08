@@ -32,7 +32,6 @@ document.getElementById('submitBook').addEventListener('click', () => {
     const bookContainer = document.createElement('div');
     bookContainer.className = 'book1';
 
-    // Only create <img> if a file was uploaded
     if(imageInput.files && imageInput.files[0]) {
         const img = document.createElement('img');
         const reader = new FileReader();
@@ -72,13 +71,12 @@ document.getElementById('submitBook').addEventListener('click', () => {
 
     document.querySelector('.reviews').before(bookContainer);
 
-    // Clear inputs
     document.getElementById('bookTitle').value = '';
     document.getElementById('bookAuthor').value = '';
     document.getElementById('Description').value = '';
     imageInput.value = '';
 });
-const currentUser = "Devishree"; // Replace this dynamically with logged-in user
+const currentUser = "Devishree"; 
 
 document.getElementById('submitBook').addEventListener('click', () => {
     const title = document.getElementById('bookTitle').value.trim();
@@ -93,9 +91,8 @@ document.getElementById('submitBook').addEventListener('click', () => {
 
     const bookContainer = document.createElement('div');
     bookContainer.className = 'book1';
-    bookContainer.dataset.user = currentUser; // attach user info
+    bookContainer.dataset.user = currentUser; 
 
-    // Only create <img> if a file was uploaded
     if(imageInput.files && imageInput.files[0]) {
         const img = document.createElement('img');
         const reader = new FileReader();
@@ -114,7 +111,6 @@ document.getElementById('submitBook').addEventListener('click', () => {
         <p>${description}</p>
     `;
 
-    // Show delete button only if current user is the one who added the book
     if(bookContainer.dataset.user === currentUser) {
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
