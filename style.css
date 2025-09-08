@@ -1,4 +1,3 @@
-/* General Styling */
 body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin: 0;
@@ -7,7 +6,6 @@ body {
     color: #333;
 }
 
-/* Header */
 header .head {
     background-image: url('285ea2b48cee0319942a98369c8a67b4.jpg');
     background-size: cover;
@@ -32,7 +30,6 @@ header .head marquee {
     color: #fff;
 }
 
-/* Section Title */
 .bbb {
     margin: 30px;
     font-size: 28px;
@@ -41,7 +38,6 @@ header .head marquee {
     padding-left: 10px;
 }
 
-/* Book Container */
 .book1 {
     display: flex;
     align-items: center;
@@ -67,7 +63,6 @@ header .head marquee {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Book Info */
 .info h4 {
     margin: 0;
     font-size: 1.3em;
@@ -90,7 +85,6 @@ header .head marquee {
     text-decoration: underline;
 }
 
-/* Floating Home Button */
 .home-button {
     position: fixed;
     bottom: 40px;
@@ -108,7 +102,6 @@ header .head marquee {
     transform: scale(1.1);
 }
 
-/* Reviews Section */
 .reviews {
     margin: 40px auto;
     width: 70%;
@@ -145,7 +138,6 @@ button:hover {
     background-color: black;
 }
 
-/* Footer */
 footer {
     background-color: rgb(77, 34, 34);
     font-size: 16px;
