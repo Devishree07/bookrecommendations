@@ -24,29 +24,25 @@ document.getElementById('submitBook').addEventListener('click', () => {
     const description = document.getElementById('Description').value.trim();
     const imageInput = document.getElementById('bookImage');
 
-    // Validation
     if(!title || !author || !description) {
         alert("⚠️ Please enter title, author, and description!");
         return;
     }
 
-    // Create book card container
     const bookContainer = document.createElement('div');
     bookContainer.className = 'book1';
 
-    // Create image element
-    const img = document.createElement('img');
+    // Only add image if user uploaded one
     if(imageInput.files && imageInput.files[0]) {
+        const img = document.createElement('img');
         const reader = new FileReader();
         reader.onload = function(e) {
             img.src = e.target.result;
         }
         reader.readAsDataURL(imageInput.files[0]);
-    } else {
-        img.src = 'images/default-book.png'; // fallback image
+        bookContainer.appendChild(img);
     }
 
-    // Create info div
     const infoDiv = document.createElement('div');
     infoDiv.className = 'info';
     infoDiv.innerHTML = `
@@ -55,7 +51,6 @@ document.getElementById('submitBook').addEventListener('click', () => {
         <p>${description}</p>
     `;
 
-    // Create delete button
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     deleteBtn.style.backgroundColor = 'red';
@@ -66,19 +61,15 @@ document.getElementById('submitBook').addEventListener('click', () => {
     deleteBtn.style.border = 'none';
     deleteBtn.style.borderRadius = '5px';
 
-    // Delete functionality
     deleteBtn.addEventListener('click', () => {
         if(confirm(`Are you sure you want to delete "${title}"?`)) {
             bookContainer.remove();
         }
     });
 
-    // Append delete button and info to card
     infoDiv.appendChild(deleteBtn);
-    bookContainer.appendChild(img);
     bookContainer.appendChild(infoDiv);
 
-    // Add book card above the reviews section
     document.querySelector('.reviews').before(bookContainer);
 
     // Clear inputs
