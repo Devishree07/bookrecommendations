@@ -26,7 +26,7 @@ document.getElementById('submitBook').addEventListener('click', () => {
     const imageInput = document.getElementById('bookImage');
     
     if(!title || !author) {
-        alert(" Please enter both title, author and description");
+        alert(" Please enter both title and author!");
         return;
     }
 
