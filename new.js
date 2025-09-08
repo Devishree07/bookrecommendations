@@ -21,17 +21,20 @@ document.getElementById('submitSuggestion').addEventListener('click', () => {
 document.getElementById('submitBook').addEventListener('click', () => {
     const title = document.getElementById('bookTitle').value.trim();
     const author = document.getElementById('bookAuthor').value.trim();
+    const description = document.getElementById('Description').value.trim();
     const imageInput = document.getElementById('bookImage');
-    
-    if(!title || !author) {
-        alert("⚠️ Please enter both title and author!");
+
+    // Validation
+    if(!title || !author || !description) {
+        alert("⚠️ Please enter title, author, and description!");
         return;
     }
 
-    // Create a new book card
+    // Create book card container
     const bookContainer = document.createElement('div');
     bookContainer.className = 'book1';
 
+    // Create image element
     const img = document.createElement('img');
     if(imageInput.files && imageInput.files[0]) {
         const reader = new FileReader();
@@ -43,12 +46,13 @@ document.getElementById('submitBook').addEventListener('click', () => {
         img.src = 'images/default-book.png'; // fallback image
     }
 
+    // Create info div
     const infoDiv = document.createElement('div');
     infoDiv.className = 'info';
     infoDiv.innerHTML = `
         <h4>Title: ${title}</h4>
         <p>Author: ${author}</p>
-        <p>User submitted book.</p>
+        <p>${description}</p>
     `;
 
     // Create delete button
@@ -64,18 +68,22 @@ document.getElementById('submitBook').addEventListener('click', () => {
 
     // Delete functionality
     deleteBtn.addEventListener('click', () => {
-        bookContainer.remove(); // removes the entire book card
+        if(confirm(`Are you sure you want to delete "${title}"?`)) {
+            bookContainer.remove();
+        }
     });
 
-    infoDiv.appendChild(deleteBtn); // add delete button inside info
+    // Append delete button and info to card
+    infoDiv.appendChild(deleteBtn);
     bookContainer.appendChild(img);
     bookContainer.appendChild(infoDiv);
 
-    // Add the new book to the page (above the reviews section)
+    // Add book card above the reviews section
     document.querySelector('.reviews').before(bookContainer);
 
     // Clear inputs
     document.getElementById('bookTitle').value = '';
     document.getElementById('bookAuthor').value = '';
+    document.getElementById('Description').value = '';
     imageInput.value = '';
 });
