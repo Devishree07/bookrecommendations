@@ -1,4 +1,3 @@
-// Scroll to top
 document.getElementById('homeBtn').addEventListener('click', function(event) {
     event.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -20,14 +19,12 @@ document.getElementById('submitSuggestion').addEventListener('click', () => {
     }
 });
 
-// Save book to localStorage
 function saveBook(book) {
     let books = JSON.parse(localStorage.getItem("books")) || [];
     books.push(book);
     localStorage.setItem("books", JSON.stringify(books));
 }
 
-// Load books on page load
 function loadBooks() {
     let books = JSON.parse(localStorage.getItem("books")) || [];
     books.forEach(book => {
@@ -35,7 +32,6 @@ function loadBooks() {
     });
 }
 
-// Display a book in the DOM
 function displayBook(title, author, description, image) {
     const bookContainer = document.createElement('div');
     bookContainer.className = 'book1';
@@ -78,14 +74,12 @@ function displayBook(title, author, description, image) {
     document.querySelector('.reviews').before(bookContainer);
 }
 
-// Delete from localStorage
 function deleteBook(title) {
     let books = JSON.parse(localStorage.getItem("books")) || [];
     books = books.filter(book => book.title !== title);
     localStorage.setItem("books", JSON.stringify(books));
 }
 
-// Handle book submit
 document.getElementById('submitBook').addEventListener('click', () => {
     const title = document.getElementById('bookTitle').value.trim();
     const author = document.getElementById('bookAuthor').value.trim();
@@ -111,12 +105,10 @@ document.getElementById('submitBook').addEventListener('click', () => {
         saveBook({ title, author, description, image });
     }
 
-    // Clear input fields
     document.getElementById('bookTitle').value = '';
     document.getElementById('bookAuthor').value = '';
     document.getElementById('Description').value = '';
     imageInput.value = '';
 });
 
-// Load saved books when page loads
 window.onload = loadBooks;
