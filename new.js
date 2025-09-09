@@ -25,15 +25,15 @@ document.getElementById('submitBook').addEventListener('click', () => {
     const imageInput = document.getElementById('bookImage');
 
     if(!title || !author || !description) {
-        alert("⚠️ Please enter title, author, and description!");
+        antainer.className = 'book1';
+
+    if(imageInput.files && imageInput.files[0]) {
+        colert("⚠️ Please enter title, author, and description!");
         return;
     }
 
     const bookContainer = document.createElement('div');
-    bookContainer.className = 'book1';
-
-    if(imageInput.files && imageInput.files[0]) {
-        const img = document.createElement('img');
+    bookConst img = document.createElement('img');
         const reader = new FileReader();
         reader.onload = function(e) {
             img.src = e.target.result;
@@ -76,7 +76,13 @@ document.getElementById('submitBook').addEventListener('click', () => {
     document.getElementById('Description').value = '';
     imageInput.value = '';
 });
-const currentUser = "Devishree"; 
+const currentUser = "Devishree"; // Replace dynamically when you have real login system
+
+// Load saved books on page load
+window.addEventListener("DOMContentLoaded", () => {
+    const savedBooks = JSON.parse(localStorage.getItem("books")) || [];
+    savedBooks.forEach(book => renderBook(book));
+});
 
 document.getElementById('submitBook').addEventListener('click', () => {
     const title = document.getElementById('bookTitle').value.trim();
@@ -84,34 +90,72 @@ document.getElementById('submitBook').addEventListener('click', () => {
     const description = document.getElementById('Description').value.trim();
     const imageInput = document.getElementById('bookImage');
 
-    if(!title || !author || !description) {
+    if (!title || !author || !description) {
         alert("⚠️ Please enter title, author, and description!");
         return;
     }
 
-    const bookContainer = document.createElement('div');
-    bookContainer.className = 'book1';
-    bookContainer.dataset.user = currentUser; 
-
-    if(imageInput.files && imageInput.files[0]) {
-        const img = document.createElement('img');
+    let imageData = null;
+    if (imageInput.files && imageInput.files[0]) {
         const reader = new FileReader();
-        reader.onload = function(e) {
-            img.src = e.target.result;
+        reader.onload = function (e) {
+            imageData = e.target.result;
+
+            const newBook = { title, author, description, image: imageData, user: currentUser };
+            saveBook(newBook);
+            renderBook(newBook);
         }
         reader.readAsDataURL(imageInput.files[0]);
+    } else {
+        const newBook = { title, author, description, image: null, user: currentUser };
+        saveBook(newBook);
+        renderBook(newBook);
+    }
+
+    // Clear inputs
+    document.getElementById('bookTitle').value = '';
+    document.getElementById('bookAuthor').value = '';
+    document.getElementById('Description').value = '';
+    imageInput.value = '';
+});
+
+// Save to localStorage
+function saveBook(book) {
+    const books = JSON.parse(localStorage.getItem("books")) || [];
+    books.push(book);
+    localStorage.setItem("books", JSON.stringify(books));
+}
+
+// Delete from localStorage
+function deleteBook(title, user) {
+    let books = JSON.parse(localStorage.getItem("books")) || [];
+    books = books.filter(book => !(book.title === title && book.user === user));
+    localStorage.setItem("books", JSON.stringify(books));
+}
+
+// Render book card
+function renderBook(book) {
+    const bookContainer = document.createElement('div');
+    bookContainer.className = 'book1';
+    bookContainer.dataset.user = book.user;
+
+    // Image (only if exists)
+    if (book.image) {
+        const img = document.createElement('img');
+        img.src = book.image;
         bookContainer.appendChild(img);
     }
 
     const infoDiv = document.createElement('div');
     infoDiv.className = 'info';
     infoDiv.innerHTML = `
-        <h4>Title: ${title}</h4>
-        <p>Author: ${author}</p>
-        <p>${description}</p>
+        <h4>Title: ${book.title}</h4>
+        <p>Author: ${book.author}</p>
+        <p>${book.description}</p>
     `;
 
-    if(bookContainer.dataset.user === currentUser) {
+    // Show delete button only for the user who added it
+    if (book.user === currentUser) {
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
         deleteBtn.style.backgroundColor = 'red';
@@ -123,8 +167,9 @@ document.getElementById('submitBook').addEventListener('click', () => {
         deleteBtn.style.borderRadius = '5px';
 
         deleteBtn.addEventListener('click', () => {
-            if(confirm(`Are you sure you want to delete "${title}"?`)) {
+            if (confirm(`Are you sure you want to delete "${book.title}"?`)) {
                 bookContainer.remove();
+                deleteBook(book.title, book.user);
             }
         });
 
@@ -133,10 +178,4 @@ document.getElementById('submitBook').addEventListener('click', () => {
 
     bookContainer.appendChild(infoDiv);
     document.querySelector('.reviews').before(bookContainer);
-
-    // Clear inputs
-    document.getElementById('bookTitle').value = '';
-    document.getElementById('bookAuthor').value = '';
-    document.getElementById('Description').value = '';
-    imageInput.value = '';
-});
+}
