@@ -1,4 +1,3 @@
-// Scroll to top
 document.getElementById('homeBtn').addEventListener('click', function(event) {
     event.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -13,10 +12,10 @@ document.getElementById('submitSuggestion').addEventListener('click', () => {
         suggestions.push(suggestion);
         localStorage.setItem("suggestions", JSON.stringify(suggestions));
 
-        alert("✅ Thanks for your suggestion: " + suggestion);
+        alert("Thanks for your suggestion: " + suggestion);
         suggestionInput.value = "";
     } else {
-        alert("⚠️ Please enter a suggestion!");
+        alert("Please enter a suggestion!");
     }
 });
 
@@ -27,7 +26,7 @@ document.getElementById('submitBook').addEventListener('click', () => {
     const imageInput = document.getElementById('bookImage');
 
     if(!title || !author || !description) {
-        alert("⚠️ Please enter title, author, and description!");
+        alert("Please enter title, author, and description!");
         return;
     }
 
@@ -50,7 +49,7 @@ document.getElementById('submitBook').addEventListener('click', () => {
         <h4>Title: ${title}</h4>
         <p>Author: ${author}</p>
         <p>${description}</p>
-        <small style="color: gray;">📌 Entered by the user</small>
+        <small style="color: gray;">Entered by the user</small>
     `;
 
     const deleteBtn = document.createElement('button');
@@ -74,7 +73,6 @@ document.getElementById('submitBook').addEventListener('click', () => {
 
     document.querySelector('.reviews').before(bookContainer);
 
-    // Clear inputs
     document.getElementById('bookTitle').value = '';
     document.getElementById('bookAuthor').value = '';
     document.getElementById('Description').value = '';
