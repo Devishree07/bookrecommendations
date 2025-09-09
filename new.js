@@ -76,7 +76,17 @@ document.getElementById('submitBook').addEventListener('click', () => {
     document.getElementById('Description').value = '';
     imageInput.value = '';
 });
-const currentUser = "Devishree"; // Replace dynamically when login is added
+const currentUser = "Devishree"; // Replace dynamically when you have real login system
+
+// Load saved books on page load
+window.addEventListener("DOMContentLoaded", () => {
+    const savedBooks = JSON.parse(localStorage.getItem("books")) || [];
+    savedBooks.forEach(book => renderBook(book));
+});
+
+document.getElementById('submitBook').addEventListener('click', () => {
+    const title = document.getElementById('bookTitle').value.trim();
+    consconst currentUser = "Devishree"; // Replace dynamically when you have real login system
 
 // Load saved books on page load
 window.addEventListener("DOMContentLoaded", () => {
@@ -95,26 +105,19 @@ document.getElementById('submitBook').addEventListener('click', () => {
         return;
     }
 
-    // Unique ID for each book
-    const id = Date.now();
-
+    let imageData = null;
     if (imageInput.files && imageInput.files[0]) {
         const reader = new FileReader();
         reader.onload = function (e) {
-            const newBook = {
-                id,
-                title,
-                author,
-                description,
-                image: e.target.result,
-                user: currentUser
-            };
+            imageData = e.target.result;
+
+            const newBook = { title, author, description, image: imageData, user: currentUser };
             saveBook(newBook);
             renderBook(newBook);
         }
         reader.readAsDataURL(imageInput.files[0]);
     } else {
-        const newBook = { id, title, author, description, image: null, user: currentUser };
+        const newBook = { title, author, description, image: null, user: currentUser };
         saveBook(newBook);
         renderBook(newBook);
     }
@@ -134,9 +137,9 @@ function saveBook(book) {
 }
 
 // Delete from localStorage
-function deleteBook(id) {
+function deleteBook(title, user) {
     let books = JSON.parse(localStorage.getItem("books")) || [];
-    books = books.filter(book => book.id !== id);
+    books = books.filter(book => !(book.title === title && book.user === user));
     localStorage.setItem("books", JSON.stringify(books));
 }
 
@@ -145,7 +148,6 @@ function renderBook(book) {
     const bookContainer = document.createElement('div');
     bookContainer.className = 'book1';
     bookContainer.dataset.user = book.user;
-    bookContainer.dataset.id = book.id;
 
     // Image (only if exists)
     if (book.image) {
@@ -177,7 +179,7 @@ function renderBook(book) {
         deleteBtn.addEventListener('click', () => {
             if (confirm(`Are you sure you want to delete "${book.title}"?`)) {
                 bookContainer.remove();
-                deleteBook(book.id);
+                deleteBook(book.title, book.user);
             }
         });
 
