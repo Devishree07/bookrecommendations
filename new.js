@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // Handle Add Book
-document.getElementById('submitBook').addEventListener('click', () => {
+document.getElementById('reviews').addEventListener('click', () => {
     const title = document.getElementById('bookTitle').value.trim();
     const author = document.getElementById('bookAuthor').value.trim();
     const description = document.getElementById('Description').value.trim();
