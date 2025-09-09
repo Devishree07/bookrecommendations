@@ -1,10 +1,10 @@
 // ✅ Feedback system (unchanged)
-document.getElementById('reviews').addEventListener('click', function (event) {
+document.getElementById('submitSuggestion').addEventListener('click', function (event) {
     event.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-document.getElementById('reviews').addEventListener('click', () => {
+document.getElementById('submitSuggestion').addEventListener('click', () => {
     const suggestionInput = document.getElementById('ree');
     const suggestion = suggestionInput.value.trim();
 
@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // Handle Add Book
-document.getElementById('reviews').addEventListener('click', () => {
+document.getElementById('submitBook').addEventListener('click', () => {
     const title = document.getElementById('bookTitle').value.trim();
     const author = document.getElementById('bookAuthor').value.trim();
     const description = document.getElementById('Description').value.trim();
