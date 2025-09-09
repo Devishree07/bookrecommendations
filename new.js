@@ -1,10 +1,10 @@
 // ✅ Feedback system (unchanged)
-document.getElementById('submitSuggestion').addEventListener('click', function (event) {
+document.getElementById('reviews').addEventListener('click', function (event) {
     event.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-document.getElementById('submitSuggestion').addEventListener('click', () => {
+document.getElementById('reviews').addEventListener('click', () => {
     const suggestionInput = document.getElementById('ree');
     const suggestion = suggestionInput.value.trim();
 
